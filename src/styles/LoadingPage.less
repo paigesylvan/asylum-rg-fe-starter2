@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .loading-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .loader {
+    border-top: 10px solid blue;
+    border-left: 10px solid rgb(0, 110, 255);
+    border-bottom: 10px solid rgb(0, 153, 255);
+    border-right: 10px solid rgb(0, 204, 255);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 3s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

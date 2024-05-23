@@ -6,10 +6,11 @@ import {
   // useHistory,
   Switch,
 } from 'react-router-dom';
-
+import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 import 'antd/dist/antd.less';
 import { NotFoundPage } from './components/pages/NotFound';
 import { LandingPage } from './components/pages/Landing';
+import LoadingPage from './components/common/LoadingPage';
 
 import { FooterContent, SubFooter } from './components/Layout/Footer';
 import { HeaderContent } from './components/Layout/Header';
@@ -22,16 +23,28 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import reducer from './state/reducers';
 import { colors } from './styles/data_vis_colors';
+import ProfilePage from './components/pages/Profile/ProfilePage';
 
 const { primary_accent_color } = colors;
+
+const domain = 
+   'dev-kr11gpui1uacisyb.us.auth0.com';
+  const clientId =
+  "OWC8hS47xjpOg2Ibjjf3uuJXCKPQh8hu";
 
 const store = configureStore({ reducer: reducer });
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+    <Auth0Provider
+        domain={domain}
+        clientId={clientId}
+        redirect_uri={window.location.origin}
+      >
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Auth0Provider>
     </Provider>
   </Router>,
   document.getElementById('root')
@@ -39,6 +52,8 @@ ReactDOM.render(
 
 export function App() {
   const { Footer, Header } = Layout;
+  const { isLoading, error } = useAuth0();
+
   return (
     <Layout>
       <Header
@@ -51,11 +66,16 @@ export function App() {
       >
         <HeaderContent />
       </Header>
+      {error && <div>Oops... {error.message}</div>}{' '}
+      {!error && isLoading && <LoadingPage />}
+      {!error && !isLoading && (
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
+        <Route path="/profile" component={ProfilePage} />
         <Route component={NotFoundPage} />
       </Switch>
+      )}
       <Footer
         style={{
           backgroundColor: primary_accent_color,

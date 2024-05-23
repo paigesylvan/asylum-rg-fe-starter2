@@ -1,0 +1,68 @@
+@main-color: #404c4a;
+@secondary-color: #707070;
+@white: #ffffff;
+@mobile-small: ~'(min-width: 320px) and (max-width: 375px)';
+@mobile-medium: ~'(min-width: 376px) and (max-width: 414px)';
+@mobile-large: ~'(min-width: 415px) and (max-width: 480px)';
+@tablet-small: ~'(min-width: 481px) and (max-width: 768px)';
+@tablet-large: ~'(min-width: 769px) and (max-width: 1024px)';
+@laptop: ~'(min-width: 1025px) and (max-width: 1280px)';
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid @main-color;
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  height: 650px;
+  width: 525px;
+}
+
+.content-container img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 2px solid @main-color;
+}
+
+.content-container h2 {
+  font-size: 2.5rem;
+  color: @main-color;
+  margin-bottom: 20px;
+}
+
+.user-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info {
+  display: flex;
+  font-size: 1.3rem;
+  color: @main-color;
+  margin-bottom: 10px;
+}
+
+.obj-key {
+  font-weight: 600;
+  color: @main-color;
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+
+.user-value {
+  font-weight: 200;
+  color: @secondary-color;
+  margin-bottom: 10px;
+}
