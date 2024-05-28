@@ -17,7 +17,6 @@ const ProfilePage = () => {
   });
 
   return (
-    //FIXME add this to graphs too so users can't go directly to /graphs
     isAuthenticated && (
       <div className="section-container">
         <div className="content-container">
@@ -27,10 +26,6 @@ const ProfilePage = () => {
             <div className="user-info">
               <span className="obj-key">Username: </span>
               <span className="user-value">{user.nickname}</span>
-            </div>
-            <div className="user-info">
-              <span className="obj-key">Sub: </span>
-              <span className="user-value">{user.sub}</span>
             </div>
             <div className="user-info">
               <span className="obj-key">Last Updated: </span>

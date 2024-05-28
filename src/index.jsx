@@ -27,10 +27,8 @@ import ProfilePage from './components/pages/Profile/ProfilePage';
 
 const { primary_accent_color } = colors;
 
-const domain = 
-   'dev-kr11gpui1uacisyb.us.auth0.com';
-  const clientId =
-  "OWC8hS47xjpOg2Ibjjf3uuJXCKPQh8hu";
+const domain = process.env.REACT_APP_AUTH0_DOMAIN || 'dev-kr11gpui1uacisyb.us.auth0.com';
+  const clientId = process.env.EACT_APP_AUTH0_CLIENT_ID ||"OWC8hS47xjpOg2Ibjjf3uuJXCKPQh8hu";
 
 const store = configureStore({ reducer: reducer });
 ReactDOM.render(
@@ -39,7 +37,9 @@ ReactDOM.render(
     <Auth0Provider
         domain={domain}
         clientId={clientId}
-        redirect_uri={window.location.origin}
+        authorizationParams={{
+          redirect_uri: window.location.origin
+      }}
       >
         <React.StrictMode>
           <App />
